@@ -1,0 +1,48 @@
+body {
+    background-color: black;
+    color: orange;
+    font-family: Roboto, Ubuntu, Open Sans, sans-serif;
+}
+
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: lightgray;
+}
+
+a:hover {
+    color: yellow;
+}
+
+a:active {
+    color: antiquewhite;
+}
+
+.title {
+    text-align: center;
+}
+
+.profile {
+    background-color: teal;
+    color: greenyellow;
+    border-radius: 25px;
+    text-align: center;
+}
+
+.profile li {
+    list-style: none;
+    padding: 5px;
+}
+
+.interests {
+    background-color: darkslategrey;
+    color: limegreen;
+    text-align: center;
+}
+
+.interests li {
+    list-style: square;
+    padding: 5px;
+}

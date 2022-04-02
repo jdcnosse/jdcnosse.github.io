@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Color Guessing Game</title>
+    </head>
+    <body>
+        <h1>Color Guessing Game</h1>
+        <button type="button" onclick="runGame()">Start Game</button>
+        <script>
+            const COLORS_ARRAY = ['orange', 'blue', 'gold', 'white', 'green', 'magenta', 'red', 'cyan', 'yellow', 'gray'];
+
+            function runGame() {
+                //initialize variables for the user's guess, the number of tries, and the "correct" value
+                let guessUnformatted = '';
+                let guess = '';
+                let correct = false;
+                let numTries = 0;
+
+                //generating a random number from 0 to the length of the color array variable
+                const targetIndex = 3; //Math.floor(Math.random() * COLORS_ARRAY.length);
+
+                //pulling the specific string that is in the specific spot in the color array that the random number generated
+                const target = COLORS_ARRAY[targetIndex];
+                let colorsAlphabetized = COLORS_ARRAY.sort();
+                //create a variable to display the array in a more visually appealing way
+                let colorsWithSpace = colorsAlphabetized.join(", ");
+
+                do {
+                    //prompt the user for input
+                    guessUnformatted = prompt('I am thinking of one of these colors:\n\n' + colorsWithSpace + '\n\nWhat color am I thinking of?\n');
+
+                    //ensure that the user's input isn't case-sensitive
+                    guess=guessUnformatted.toLowerCase();
+
+                    //increment the number of tries by one for each time the user guesses
+                    numTries += 1;
+
+                    //if the user hits the cancel button, this will exit the game
+                    if (guess === null) {
+                        alert('Thank you for playing.');
+                        return;
+                    } 
+
+                    correct = checkGuess(guess, target);
+                } while (!correct);
+
+                document.body.style.background = guess;
+                alert('Congratulations you guessed correctly! \n\nIt took you ' + numTries + ' attempts.');
+            }
+
+            function checkGuess(guess, target) {
+                let correct = false;
+
+                //check if the user input matches one of the items from the array
+                if (!COLORS_ARRAY.includes(guess)) {
+                    alert('You did not pick a color from the list.');
+                }
+                //check if the user's input is higher in the array than the random selected color
+                else if (guess > target) {
+                    alert('Your guess is too high!');
+                }
+                //check if the user's input is lower in the array than the random selected color
+                else if (guess < target) {
+                    alert('Your guess is too low!');
+                }
+                //if none of the other statements are correct, then the user's input must match the random selected color
+                else {
+                    correct = true;
+                }
+
+                return correct;
+            }
+        </script>
+    </body>
+</html>
